@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu - Om Katsu Om!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/rellax/rellax.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <style>
+    /* Perbaikan testimoni */
+ #testimonialItems {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* untuk 3 testimoni */
+    overflow: hidden;
+  }
+  .testimonial {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    font-style: italic;
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 8px;
+    color: #111; /* default gelap */
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  /* Dark mode untuk testimonial */
+  .dark .testimonial {
+    color: #f0f0f0; /* putih terang di dark mode */
+    background: rgba(255 255 255 / 0.15);
+  }
+
+  /* Filter & search styling */
+  .filter-container {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .filter-container label {
+    font-weight: 600;
+    white-space: nowrap;
+    color: #111; /* default */
+  }
+  /* dark mode label */
+  .dark .filter-container label {
+    color: #f0f0f0;
+  }
+  .filter-container select,
+  .filter-container input[type="text"] {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    flex-grow: 1;
+    min-width: 150px;
+    max-width: 300px;
+    color: #111;
+    background: white;
+  }
+  /* dark mode input & select */
+  .dark .filter-container select,
+  .dark .filter-container input[type="text"] {
+    color: #f0f0f0;
+    background: #333;
+    border-color: #555;
+  }
+
+  /* menu item text */
+  .menu-item h3,
+  .menu-item p,
+  .menu-item span {
+    color: #111;
+  }
+  .dark .menu-item h3,
+  .dark .menu-item p,
+  .dark .menu-item span {
+    color: #eee;
+  }
+    .float-animate {
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+  
+  </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+  <!-- Navbar -->
+  <header
+    class="fixed w-full z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-sm"
+  >
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <img src="img/logo.jpg" alt="" class="w-auto h-20 rounded-full"/>
+      <nav class="space-x-6 flex items-center">
+        <a href="index.html" class="hover:text-red-500">Beranda</a>
+        <a href="#" class="text-red-600 font-semibold">Menu</a>
+        <a href="tentang.html" class="hover:text-red-500">Tentang</a>
+        <button id="toggleDark" class="ml-4 bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">
+          🌙
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Menu -->
+  <section
+  class="pt-32 pb-16 bg-gradient-to-br from-red-100 to-yellow-50 dark:from-gray-800 dark:to-gray-700"
+>
+  <div class="max-w-4xl mx-auto text-center" data-aos="fade-down">
+    <h2
+      id="judulMenu"
+      class="text-5xl font-extrabold tracking-tight mb-4 leading-tight font-serif"
+    >
+    </h2>
+    <p
+      id="deskripsiMenu"
+      class="text-lg italic text-gray-600 dark:text-gray-300"
+    >
+    </p>
+  </div>
+</section>
+
+
+  <!-- Parallax Image -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+  <h2 class="text-3xl font-bold mb-8 text-center dark:text-white">Galeri Katsu Kami</h2>
+  <div class="flex flex-wrap justify-center gap-8">
+    <!-- Item 1 -->
+    <div class="gallery-item w-48 flex flex-col items-center">
+      <img
+        src="img/human.png"
+        alt="Chicken Katsu"
+        class="rounded-lg shadow-md mb-2 object-cover h-32 w-auto mx-auto"
+      />
+      <p class="text-center text-gray-700 dark:text-gray-300 font-semibold">Chicken Katsu Original</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="gallery-item w-48 flex flex-col items-center">
+      <img
+        src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+        alt="Katsu Curry"
+        class="rounded-lg shadow-md mb-2 object-cover h-32 w-auto mx-auto"
+      />
+      <p class="text-center text-gray-700 dark:text-gray-300 font-semibold">Katsu Curry</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="gallery-item w-48 flex flex-col items-center">
+      <img
+        src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+        alt="Bento Spesial"
+        class="rounded-lg shadow-md mb-2 object-cover h-32 w-auto mx-auto"
+      />
+      <p class="text-center text-gray-700 dark:text-gray-300 font-semibold">Bento Spesial</p>
+    </div>
+  </div>
+</section>
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Animasi Flip -->
+<script>
+  gsap.set(".gallery-item", { transformStyle: "preserve-3d", transformPerspective: 1000 });
+
+  gsap.from(".gallery-item img", {
+    duration: 1.2,
+    opacity: 0,
+    rotateY: 90,
+    transformOrigin: "center",
+    stagger: 0.3,
+    ease: "back.out(1.7)"
+  });
+</script>
+
+
+
+
+
+  <!-- Filter & Search -->
+  <section class="max-w-6xl mx-auto px-4 mt-12">
+    <div class="filter-container" data-aos="fade-up">
+      <label for="filterCategory">Filter Kategori:</label>
+      <select id="filterCategory" aria-label="Filter kategori menu">
+        <option value="all">Semua</option>
+        <option value="chicken">Ayam</option>
+        <option value="bento">Bento</option>
+        <option value="tofu">Vegan</option>
+      </select>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari menu"
+        aria-label="Cari menu"
+      />
+    </div>
+  </section>
+
+  <!-- Daftar Menu -->
+<section
+  id="menuList"
+  class="py-8 max-w-6xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+>
+  <!-- Item Menu -->
+  <div
+    class="menu-item bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:scale-105 transition-all duration-300"
+    data-aos="fade-up"
+    data-category="chicken"
+    data-name="Chicken Katsu Original"
+    data-price="25000"
+  >
+    <img
+      src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+      class="rounded mb-4 block mx-auto tilt-img float-animate transition duration-500 transform hover:-translate-y-1 hover:scale-105 filter grayscale hover:grayscale-0 hover:blur-0 shadow-md hover:shadow-xl"
+      alt="Chicken Katsu"
+    />
+    <h3 class="text-xl font-bold mb-2 font-serif">Chicken Katsu Original</h3>
+    <p class="text-gray-600 dark:text-gray-300">
+      Daging ayam premium digoreng krispi, disajikan dengan nasi dan salad.
+    </p>
+    <span class="block mt-3 font-semibold text-red-500">Rp 25.000</span>
+    
+  </div>
+
+  <div
+    class="menu-item bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:scale-105 transition-all duration-300"
+    data-aos="fade-up"
+    data-aos-delay="100"
+    data-category="chicken"
+    data-name="Katsu Curry"
+    data-price="30000"
+  >
+    <img
+      src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+      class="rounded mb-4 block mx-auto tilt-img float-animate transition duration-500 transform hover:-translate-y-1 hover:scale-105 filter grayscale hover:grayscale-0 hover:blur-0 shadow-md hover:shadow-xl"
+      alt="Katsu Curry"
+    />
+    <h3 class="text-xl font-bold mb-2 font-serif">Katsu Curry</h3>
+    <p class="text-gray-600 dark:text-gray-300">
+      Katsu disiram saus kari Jepang khas, cocok untuk pecinta rasa kaya rempah.
+    </p>
+    <span class="block mt-3 font-semibold text-red-500">Rp 30.000</span>
+ 
+  </div>
+
+  <div
+    class="menu-item bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:scale-105 transition-all duration-300"
+    data-aos="fade-up"
+    data-aos-delay="200"
+    data-category="bento"
+    data-name="Bento Katsu Spesial"
+    data-price="35000"
+  >
+    <img
+      src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+      class="rounded mb-4 block mx-auto tilt-img float-animate transition duration-500 transform hover:-translate-y-1 hover:scale-105 filter grayscale hover:grayscale-0 hover:blur-0 shadow-md hover:shadow-xl"
+      alt="Bento Katsu"
+    />
+    <h3 class="text-xl font-bold mb-2 font-serif">Bento Katsu Spesial</h3>
+    <p class="text-gray-600 dark:text-gray-300">
+      Paket lengkap dengan katsu, nasi, salad, dan telur dadar – cocok untuk bekal.
+    </p>
+    <span class="block mt-3 font-semibold text-red-500">Rp 35.000</span>
+   
+  </div>
+
+  <div
+  class="menu-item bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:scale-105 transition-all duration-300"
+  data-aos="fade-up"
+  data-category="tofu"
+  data-name="Tofu Katsu (Vegan)"
+  data-price="22000"
+>
+  <img
+    src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+    alt="Tofu Katsu"
+    class="rounded mb-4 block mx-auto tilt-img transition duration-700 ease-in-out transform hover:rotate-1 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl filter grayscale hover:grayscale-0 hover:blur-0"
+    onmouseenter="this.classList.add('animate__animated', 'animate__pulse')"
+    onmouseleave="this.classList.remove('animate__animated', 'animate__pulse')"
+  />
+  <h3 class="text-xl font-bold mb-2 font-serif">Tofu Katsu (Vegan)</h3>
+  <p class="text-gray-600 dark:text-gray-300">
+    Alternatif sehat berbasis nabati, cocok untuk vegetarian dan vegan.
+  </p>
+  <span class="block mt-3 font-semibold text-red-500">Rp 22.000</span>
+  
+</div>
+
+  <div
+  class="menu-item bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:scale-105 transition-all duration-300"
+  data-aos="fade-up"
+  data-category="tofu"
+  data-name="Tofu Katsu (Vegan)"
+  data-price="22000"
+>
+  <img
+    src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+    alt="Tofu Katsu"
+    class="rounded mb-4 block mx-auto tilt-img transition duration-700 ease-in-out transform hover:rotate-1 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl filter grayscale hover:grayscale-0 hover:blur-0"
+    onmouseenter="this.classList.add('animate__animated', 'animate__pulse')"
+    onmouseleave="this.classList.remove('animate__animated', 'animate__pulse')"
+  />
+  <h3 class="text-xl font-bold mb-2 font-serif">Tofu Katsu (Vegan)</h3>
+  <p class="text-gray-600 dark:text-gray-300">
+    Alternatif sehat berbasis nabati, cocok untuk vegetarian dan vegan.
+  </p>
+  <span class="block mt-3 font-semibold text-red-500">Rp 22.000</span>
+ 
+</div>
+  <div
+  class="menu-item bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:scale-105 transition-all duration-300"
+  data-aos="fade-up"
+  data-category="tofu"
+  data-name="Tofu Katsu (Vegan)"
+  data-price="22000"
+>
+  <img
+    src="img/ChatGPT Image Jun 6, 2025, 12_24_41 AM.png"
+    alt="Tofu Katsu"
+    class="rounded mb-4 block mx-auto tilt-img transition duration-700 ease-in-out transform hover:rotate-1 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl filter grayscale hover:grayscale-0 hover:blur-0"
+    onmouseenter="this.classList.add('animate__animated', 'animate__pulse')"
+    onmouseleave="this.classList.remove('animate__animated', 'animate__pulse')"
+  />
+  <h3 class="text-xl font-bold mb-2 font-serif">Tofu Katsu (Vegan)</h3>
+  <p class="text-gray-600 dark:text-gray-300">
+    Alternatif sehat berbasis nabati, cocok untuk vegetarian dan vegan.
+  </p>
+  <span class="block mt-3 font-semibold text-red-500">Rp 22.000</span>
+ 
+</div>
+
+</section>
+
+
+ 
+      
+      <!-- judul untuk testimoni -->
+<section class="bg-white dark:bg-gray-800 py-16">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-12 dark:text-white" data-aos="fade-down">Apa Kata Mereka?</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- Testimoni 1 -->
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-gray-800 dark:text-gray-100 italic mb-4">
+          “Rasa katsunya autentik banget, crispy di luar dan juicy di dalam. Sausnya juga mantap!”
+        </p>
+        <h4 class="font-semibold text-red-500 dark:text-red-400">— Rina, Pelanggan Setia</h4>
+      </div>
+
+      <!-- Testimoni 2 -->
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-gray-800 dark:text-gray-100 italic mb-4">
+          “Tempat terbaik buat makan siang bareng teman. Porsinya pas dan harganya terjangkau.”
+        </p>
+        <h4 class="font-semibold text-red-500 dark:text-red-400">— Dimas, Mahasiswa</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Dark mode toggle
+   if (!window.toggleDark) {
+    const toggleDark = document.getElementById("toggleDark");
+    window.toggleDark = toggleDark; // simpan ke global untuk menghindari redeclare
+    toggleDark.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      if (document.documentElement.classList.contains("dark")) {
+        toggleDark.textContent = "";
+      } else {
+        toggleDark.textContent = "";
+      }
+    });
+  }
+
+    // Rellax
+    new Rellax(".rellax");
+
+    // AOS
+    AOS.init();
+
+    // Filter & Search
+    const filterCategory = document.getElementById("filterCategory");
+    const searchInput = document.getElementById("searchInput");
+    const menuList = document.getElementById("menuList");
+
+    function filterMenu() {
+      const category = filterCategory.value.toLowerCase();
+      const search = searchInput.value.toLowerCase();
+
+      const items = menuList.querySelectorAll(".menu-item");
+      items.forEach((item) => {
+        const itemCategory = item.getAttribute("data-category").toLowerCase();
+        const itemName = item.getAttribute("data-name").toLowerCase();
+
+        if (
+          (category === "all" || itemCategory === category) &&
+          itemName.includes(search)
+        ) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    filterCategory.addEventListener("change", filterMenu);
+    searchInput.addEventListener("input", filterMenu);
+
+    // Testimoni slider
+    const testimonialItems = document.getElementById("testimonialItems");
+    const prevBtn = document.getElementById("prevTesti");
+    const nextBtn = document.getElementById("nextTesti");
+    let testiIndex = 0;
+    const testiCount = testimonialItems.children.length;
+
+    function showTesti(index) {
+      if (index < 0) testiIndex = testiCount - 1;
+      else if (index >= testiCount) testiIndex = 0;
+      else testiIndex = index;
+
+      testimonialItems.style.transform = `translateX(-${testiIndex * 100}%)`;
+    }
+
+    prevBtn.addEventListener("click", () => showTesti(testiIndex - 1));
+    nextBtn.addEventListener("click", () => showTesti(testiIndex + 1));
+
+    showTesti(testiIndex);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+<script>
+  VanillaTilt.init(document.querySelectorAll(".tilt-img"), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+<script>
+  VanillaTilt.init(document.querySelectorAll(".tilt-img"), {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.3,
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+<script>
+  gsap.registerPlugin(TextPlugin);
+
+  // Ganti teks judul satu kali
+  gsap.to("#judulMenu", {
+    duration: 2,
+    delay: 1,
+    text: "Menu Andalan Om Katsu Om!",
+    ease: "power2.inOut"
+  });
+
+  // Ganti teks deskripsi satu kali
+  gsap.to("#deskripsiMenu", {
+    duration: 3,
+    delay: 3,
+    text: "Rasakan sensasi katsu yang tak terlupakan 🍗🍛",
+    ease: "power1.inOut"
+  });
+</script>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>&copy; 2025 Om Katsu Om! 🍱 All rights reserved.</p>
+  </footer>
+
+
+ 
+
+</body>
+</html>

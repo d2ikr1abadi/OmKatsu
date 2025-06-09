@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Om Katsu Om!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <style>
+    .rellax { will-change: transform; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
+
+  <!-- Navbar -->
+  <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <img src="img/logo.jpg" alt="" class="w-auto h-20 rounded-full" />
+      <nav class="space-x-6 flex items-center">
+        <a href="#" class="text-red-500 font-semibold">Beranda</a>
+        <a href="menu.html" class="hover:text-red-500">Menu</a>
+        <a href="tentang.html" class="hover:text-red-500">Tentang</a>
+        <button id="toggleDark" class="ml-4 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded px-2 py-1 transition">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="h-screen flex items-center justify-center bg-gradient-to-br from-yellow-100 to-red-50 dark:from-gray-800 dark:to-gray-700 pt-24">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-5xl font-bold mb-4">Rasakan Renyahnya Om Katsu!</h2>
+      <p class="text-lg mb-6">Ayam katsu terenak di kota – halal, lezat, bergizi.</p>
+    </div>
+  </section>
+
+  <!-- Kontak CTA -->
+  <section id="kontak" class="py-20 bg-red-100 dark:bg-gray-800 text-center">
+    <h3 class="text-3xl font-bold mb-4" data-aos="fade-up">Ada Berbagai varian Menu</h3>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>&copy; 2025 Om Katsu Om! 🍱 All rights reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+
+    // Cek dark mode saat halaman dimuat
+    if (localStorage.theme === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Tombol toggle dark mode
+    const toggleDark = document.getElementById('toggleDark');
+    toggleDark.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    // GSAP Animasi
+    gsap.from("h2", { y: -50, opacity: 0, duration: 1 });
+    gsap.from("p", { y: 20, opacity: 0, delay: 0.5, duration: 1 });
+    gsap.from("a", { scale: 0, opacity: 0, delay: 1, duration: 0.5 });
+  </script>
+</body>
+</html>
